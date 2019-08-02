@@ -61,7 +61,7 @@ class Node:
         self.untriedActions = state.actions()
 
     def select_child(self):
-        upper_confidence = {c: c.totalScore/c.visits + sqrt(2 * log(self.visits)/c.visits) for c in self.childNodes}
+        upper_confidence = {c: c.totalScore/c.visits + sqrt(4 * log(self.visits)/c.visits) for c in self.childNodes}
         return max(upper_confidence, key=upper_confidence.get)
 
     def addChild(self, state, action):
@@ -75,15 +75,13 @@ class Node:
         self.totalScore += score
 
     def __repr__(self):
-        return "[A: {0} S/V: {1}/{2} U: {3}]".format(self.action, self.totalScore, self.visits - 1, self.untriedActions)
+        return "[A: {0} S/V: {1}/{2} R: {4:.2f} U: {3}]".format(self.action, self.totalScore, self.visits - 1, self.untriedActions, self.totalScore / self.visits)
 
     def treeToString(self, level = 0):
         s = '\t' * level + "" + str(self) + "\n"
         for c in self.childNodes:
             s += c.treeToString(level + 1)
         return s
-
-
 
 
 def search(root: MaxSetState, itermax, verbose):
@@ -106,12 +104,13 @@ def search(root: MaxSetState, itermax, verbose):
             node.addChild(state, a)
 
         # Simulation
-        while state.actions() != []:
-            state = state.step(state.sample_action())
-
-        # Backpropagate
 
         score = 0
+        while state.actions() != []:
+            state = state.step(state.sample_action())
+            score += 1
+        # Backpropagate
+
         while node != None:
             node.update(score)
             node = node.parentNode
@@ -124,9 +123,12 @@ def search(root: MaxSetState, itermax, verbose):
 
 import matplotlib.pyplot as plt
 
-visualize = MaxIndDataset('DeepKidney/data/mini')
+visualize = MaxIndDataset('DeepKidney/data/binomial_80') #MaxIndDataset('DeepKidney/data/small')
 
-test_graph = visualize[3]
+# big_set = MaxIndDataset('DeepKidney/data/binomial_80')
+
+ID = 8
+test_graph = visualize[ID]
 
 target = sum(test_graph.y.numpy())
 def edgeToMatrix(nodes, edge_index):
@@ -138,7 +140,10 @@ def edgeToMatrix(nodes, edge_index):
 
 test_mat = edgeToMatrix(len(test_graph.x), test_graph.edge_index)
 # In[3]:
-for i in range(20):
+
+tot_score = 0
+trials = 20
+for i in range(trials):
     start = MaxSetState(adj_matrix=test_mat)
     score = 0
     action = "None"
@@ -149,17 +154,36 @@ for i in range(20):
         action = result[0]
         score += 1
 
+    tot_score += score
     print("Action: {0} Score: {1}".format(action, score))
     print("Target: " + str(target))
     print("--------------------")
+print("Algo Trial Score: {0}".format(tot_score / trials))
+
 
 
 # In[4]:
 #
 # for i in range(20):
 #     draw_entry(visualize[i], title=str(i))
+#draw_entry(visualize[ID], title=str(ID))
+
+# Control: Random Selection
 
 
+def random_rollout(s):
+    score = 0
+    state = s.clone()
+    while state.actions() != []:
+        state = state.step(state.sample_action())
+        score += 1
+    return score
 
+start = MaxSetState(adj_matrix=test_mat)
 
+rand_trials = 1000
+rand_tot = 0
+for i in range(rand_trials):
+    rand_tot += random_rollout(start)
 
+print("Random Trial Score: {0}".format(rand_tot/rand_trials))
