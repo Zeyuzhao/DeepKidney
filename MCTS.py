@@ -4,7 +4,7 @@ import numpy as np
 
 from math import sqrt, log
 
-from DeepKidney.GCN import *
+from GCN import *
 
 # In[1]
 class MaxSetState:
@@ -123,7 +123,7 @@ def search(root: MaxSetState, itermax, verbose):
 
 import matplotlib.pyplot as plt
 
-visualize = MaxIndDataset('DeepKidney/data/binomial_80') #MaxIndDataset('DeepKidney/data/small')
+visualize = MaxIndDataset('data/small')
 
 # big_set = MaxIndDataset('DeepKidney/data/binomial_80')
 
