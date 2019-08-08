@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f647a4c2-755f-4e9a-94ac-f2378551463e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/datalore.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Env_adj.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DeepKidney.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DeepKidney.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Env_tester.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Env_tester.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Env.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Env.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Env_adj.py" beforeDir="false" afterPath="$PROJECT_DIR$/Env_adj.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GCN.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GCN.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GCN.py" beforeDir="false" afterPath="$PROJECT_DIR$/GCN.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jupyter Notebook" />
         <option value="Python Script" />
       </list>
     </option>
@@ -54,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Env_tester">
     <configuration name="Env_adj" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DeepKidney" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -66,6 +64,25 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Env_adj.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Env_tester" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DeepKidney" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Env_tester.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -98,6 +115,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Env_tester" />
         <item itemvalue="Python.Env_adj" />
       </list>
     </recent_temporary>
@@ -116,7 +134,7 @@
       <workItem from="1565035961585" duration="594000" />
       <workItem from="1565036566684" duration="741000" />
       <workItem from="1565037926561" duration="9000" />
-      <workItem from="1565038107753" duration="20333000" />
+      <workItem from="1565038107753" duration="35775000" />
     </task>
     <servers />
   </component>
@@ -133,17 +151,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Env_adj.py</url>
-          <line>54</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DeepKidney$Env_adj.coverage" NAME="Env_adj Coverage Results" MODIFIED="1565193860675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -65,7 +65,7 @@ class MaxIndDataset(InMemoryDataset):
 from torch_geometric.utils import to_networkx
 import matplotlib.pyplot as plt
 import torch
-def draw_entry(entry, color_map = None, title = None):
+def draw_entry(entry, color_map = None, title = None, node_dict = None):
     g = to_networkx(entry)
     
     if color_map:
@@ -78,13 +78,16 @@ def draw_entry(entry, color_map = None, title = None):
 
     for i in np.flatnonzero(label):
         color_map[i] = "green"
-        
+
     node_labels = entry["x"]
-    
+
+    if node_dict is None:
+        node_dict = {v:v for v in range(node_labels)}
+
     if not torch.equal(node_labels, torch.ones(len(g.nodes))):
-        node_labels = {k: "{0}:\n{1:.3f}".format(k, v) for (k, v) in enumerate(node_labels)}
+        node_labels = {k: "{0}:\n{1:.3f}".format(node_dict[k], v) for (k, v) in enumerate(node_labels)}
     else:
-        node_labels = {k: k for k in g.nodes}
+        node_labels = {k: node_dict[k] for k in g.nodes}
     
     plt.figure()
     plt.title(title)
