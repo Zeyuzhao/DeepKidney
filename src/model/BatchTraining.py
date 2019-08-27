@@ -10,6 +10,7 @@ import os.path as osp
 
 
 import wandb
+import torch.multiprocessing as mp
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 criterion = torch.nn.BCELoss()
@@ -56,7 +57,7 @@ def score_eval(model, loader):
 SAVE_FREQ = 5
 
 if __name__ == '__main__':
-    def execute(num_nodes):
+    for i, num_nodes in enumerate(range(10, 101, 10)):
         wandb.init(name="size_{0}".format(num_nodes), project="gcn", entity="deepkidney", reinit=True)
         model = ConvNet3().to(device)
         wandb.watch(model)
@@ -83,8 +84,3 @@ if __name__ == '__main__':
                     os.mkdir(folder)
                 torch.save(model.state_dict(), fp)
                 wandb.save(fp)
-
-    for i, num_nodes in enumerate(range(10, 21, 10)):
-        p = Process(target=execute, args=(num_nodes,))
-        p.start()
-        p.join()
