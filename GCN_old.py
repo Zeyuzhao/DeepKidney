@@ -82,7 +82,7 @@ def draw_entry(entry, color_map = None, title = None, node_dict = None):
     node_labels = entry["x"]
 
     if node_dict is None:
-        node_dict = {v:v for v in range(node_labels)}
+        node_dict = {v:v for v in range(len(node_labels))}
 
     if not torch.equal(node_labels, torch.ones(len(g.nodes))):
         node_labels = {k: "{0}:\n{1:.3f}".format(node_dict[k], v) for (k, v) in enumerate(node_labels)}
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     # In[12]:
 
 
-    bin_80 = MaxIndDataset('data/binomial_80')
+    bin_80 = MaxIndDataset('data/weighted_binomial_80')
 
 
     # In[13]:
@@ -196,12 +196,6 @@ if __name__ == '__main__':
             x = self.conv_mid(x, edge_index)
             x = F.relu(x)
 
-            x = self.conv_mid(x, edge_index)
-            x = F.relu(x)
-
-            x = self.conv_mid(x, edge_index)
-            x = F.relu(x)
-
             x = self.conv_out(x, edge_index)
             x = torch.sigmoid(x)
             return x
@@ -218,7 +212,7 @@ if __name__ == '__main__':
 
     model = MultiNet().to(device)
     criterion = torch.nn.BCELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=5e-4)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.008, weight_decay=5e-6)
 
     def train(epoch):
         model.train()
@@ -245,7 +239,7 @@ if __name__ == '__main__':
             running_loss += loss.item()
         return running_loss / len(loader)
 
-    for epoch in tqdm(range(15)):
+    for epoch in tqdm(range(30)):
         train_loss = train(epoch)
         val_loss = evaluate(val_loader)
         print(('Epoch: {:03d}, Train Loss: {:.4f}, Val Loss: {:.3f}').format(epoch, train_loss, val_loss))
@@ -264,7 +258,7 @@ if __name__ == '__main__':
     # In[45]:
 
 
-    torch.save(model.state_dict(), "model/unweighted_multinet.pt")
+    torch.save(model.state_dict(), "model/weighted_multinet.pt")
 
 
     # In[46]:

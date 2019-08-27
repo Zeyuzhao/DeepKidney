@@ -1,10 +1,8 @@
 import random
 
-import numpy as np
-
 from math import sqrt, log
 
-from GCN import *
+from GCN_old import *
 
 # In[1]
 class MaxSetState:
@@ -121,8 +119,6 @@ def search(root: MaxSetState, itermax, verbose):
     return sorted(list(actions.keys()), key=actions.get, reverse=True)
 # In[2]:
 
-import matplotlib.pyplot as plt
-
 visualize = MaxIndDataset('data/small')
 
 # big_set = MaxIndDataset('DeepKidney/data/binomial_80')
@@ -148,7 +144,7 @@ for i in range(trials):
     score = 0
     action = "None"
     while start.actions() != []:
-        result = search(start, 5000, False)
+        result = search(start, 5000, 1)
         start = start.step(result[0])
         print("Action: {0} Results: {1}".format(action, result))
         action = result[0]

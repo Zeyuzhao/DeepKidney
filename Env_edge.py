@@ -2,11 +2,9 @@
 
 import random
 
-import numpy as np
-
 from math import sqrt, log
 
-from GCN import *
+from GCN_old import *
 
 
 # %%
