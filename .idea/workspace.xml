@@ -3,20 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f647a4c2-755f-4e9a-94ac-f2378551463e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DeepKidney.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DeepKidney.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyc2node.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/weighted_3.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/weighted_30.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/weighted_4.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/weighted_micro.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset_gen.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/unweighted_multinet.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/weighted_multinet.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/weighted_multinet_epoch_30.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/weighted_multinet_mini.pt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BatchTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BatchTraining.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Env.ipynb" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,11 +57,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/notebooks" />
       <recent name="$PROJECT_DIR$/model/archive/archived" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/model/archive" />
       <recent name="$PROJECT_DIR$/model" />
-      <recent name="$PROJECT_DIR$/data/archive" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -266,7 +255,7 @@
       <workItem from="1566855917942" duration="5183000" />
       <workItem from="1566865194485" duration="11711000" />
       <workItem from="1566877114091" duration="455000" />
-      <workItem from="1566908311757" duration="4008000" />
+      <workItem from="1566908311757" duration="4700000" />
     </task>
     <task id="LOCAL-00001" summary="Quick Update">
       <created>1566874433262</created>
