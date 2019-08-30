@@ -30,7 +30,7 @@ def from_networkx(G):
 
 class MaxIndDataset(InMemoryDataset):
     def __init__(self, root):
-        print(osp.abspath(osp.join(root, "weight.csv")))
+        #print(osp.abspath(osp.join(root, "weight.csv")))
         self.label_frame = pd.read_csv(osp.join(root, "label.csv"), engine='python')
         self.weight_frame = pd.read_csv(osp.join(root, "weight.csv"), engine='python')
 
@@ -130,7 +130,7 @@ def draw_entry(entry, node_color=None, edge_color = None, title=None, node_dict=
 
 
 if __name__ == '__main__':
-    dataset = MaxIndDataset("../../data/weighted_mix")
+    dataset = MaxIndDataset("../../data/weighted_mix_44")
     print(len(dataset))
     for i in range(0, 5):
         print(dataset[i])

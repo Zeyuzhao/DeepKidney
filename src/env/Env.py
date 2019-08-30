@@ -82,15 +82,9 @@ class MaxSetState:
         return self.actions()[index]
 
     def getEdgeIndex(self):
-        edge_list = []
         adj_matrix = self.getAdjMatrix()
-        for i in range(len(adj_matrix)):
-            for j in range(len(adj_matrix)):
-                if adj_matrix[i, j] == 1:
-                    edge_list.append([i, j])
-        if len(edge_list) > 0:
-            edge_list = np.array(edge_list).transpose().reshape((2, -1))
-        else:
+        edge_list = np.nonzero(adj_matrix)
+        if len(edge_list) == 0:
             edge_list = np.array([[], []])
         return edge_list, self.node_weights[self.state]
 

@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from gurobipy import *
 from tqdm import tqdm
-
+import os.path as osp
 warnings.filterwarnings("ignore")
 
 import random
@@ -98,7 +98,7 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
                     graph = nx.fast_gnp_random_graph(num_nodes, edge_prob_list[nth], directed=False)
 
                     if weighted:
-                        weights = np.random.randint(1, 5, size=num_nodes)
+                        weights = np.random.randint(2, 5, size=num_nodes)
                         if extreme:
                             index = np.random.randint(num_nodes)
                             weights[index] = 10
@@ -122,32 +122,38 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
     print("done")
 
 if __name__ == '__main__':
-    num_size_types = 10
-    size_diff = 10
+    num_size_types = 1
+    size_diff = 2
 
-
-    num_examples_list = [500] * 20
+    num_examples_list = [200] * num_size_types
     num_nodes_list = [size_diff * i for i in range(1, num_size_types + 1)]
-    edge_prob_list = [3 / (i + 3) for i in num_nodes_list]
+    edge_prob_list = [15 / (i + 30) for i in num_nodes_list]
 
-    # Generate in one combined:
-    # generate_dataset(name="med_weighted_mix",
-    #                  num_examples_list=num_examples_list,
-    #                  num_nodes_list=num_nodes_list,
-    #                  edge_prob_list=edge_prob_list,
-    #                  weighted=True,
-    #                  seed=42)
+    dataset_name = "binary"
+    if osp.exists("../../data/" + dataset_name):
+        raise Exception("Existing dataset has the name [{0}]. Either remove the existing dataset, or rename the "
+                        "current one".format(dataset_name))
+
+     # Generate in one combined:
+    generate_dataset(name=dataset_name,
+                     num_examples_list=num_examples_list,
+                     num_nodes_list=num_nodes_list,
+                     edge_prob_list=edge_prob_list,
+                     weighted=True,
+                     seed=900)
 
 
     # Generate in distinct
-    for i in range(len(num_nodes_list)):
-        num_nodes = num_nodes_list[i]
-        edge_prob = edge_prob_list[i]
 
-        generate_dataset(name="int_42/weighted_{0}".format(num_nodes),
-                         num_examples_list=[1000],
-                         num_nodes_list=[num_nodes],
-                         edge_prob_list=[edge_prob],
-                         weighted=True,
-                         seed=42,
-                         extreme=False)
+    # for i in range(len(num_nodes_list)):
+    #     num_nodes = num_nodes_list[i]
+    #     edge_prob = edge_prob_list[i]
+    #     num_examples = num_examples_list[0]
+    #
+    #     generate_dataset(name="{0}/weighted_{1}".format(dataset_name, num_nodes),
+    #                      num_examples_list=[num_examples],
+    #                      num_nodes_list=[num_nodes],
+    #                      edge_prob_list=[edge_prob],
+    #                      weighted=True,
+    #                      seed=10101,
+    #                      extreme=False)

@@ -6,14 +6,14 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 conv_net = ConvNet3().to(device)
 
-name="weighted_convnet_epoch_19.pt"
-folder="wandb/run-20190827_013223-jkt02lp5"
+name="epoch_9"
+folder="../../model/size_0"
 
 params = torch.load(osp.join(folder, name))
 conv_net.load_state_dict(params)
 conv_net.eval()
 
-visualize = MaxIndDataset("../../data/int_42/weighted_40")
+visualize = MaxIndDataset("../../data/testset_43/weighted_10")
 
 for ID in range(0, len(visualize), 100):
     test_item = visualize[ID]
