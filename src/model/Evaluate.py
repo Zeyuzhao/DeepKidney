@@ -4,7 +4,7 @@ from collections import OrderedDict
 from tqdm import tqdm
 from glob import glob
 from model.EvalUtils import *
-
+from search.Trainer_tester import random_rollout_max, random_rollout_avg
 DEBUG = False
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -21,7 +21,7 @@ conv_net.load_state_dict(params)
 conv_net.eval()
 
 
-dataset_name = "binary"
+dataset_name = "size_80"
 dataset_folder = osp.join("../../data", dataset_name)
 
 dataset_subfolders = glob(osp.join(dataset_folder, "[!processed]*/"))
@@ -38,6 +38,10 @@ if len(dataset_subfolders) == 0:
 
 acc_arr = [0] * len(dataset_subfolders)
 opt_arr = [0] * len(dataset_subfolders)
+
+rand_arr = [0] * len(dataset_subfolders)
+compare_opt = [0] * len(dataset_subfolders)
+
 dataset_sizes = []
 
 for dataset_num, dataset_dir in enumerate(dataset_subfolders):
@@ -58,17 +62,24 @@ for dataset_num, dataset_dir in enumerate(dataset_subfolders):
         acc = np.count_nonzero(correct) / len(correct)
 
         # Compute a score for each test item by running through the MDP guided by network
-        score = 0
-        for i in range(5):
-            s, actions = max_eval(test_item, conv_net)
-            score = max(s, score)
-
+        #score = 0
+        # for i in range(5):
+        #     s, actions = max_eval(test_item, conv_net)
+        #     score = max(s, score)
+        score, _ = max_eval(test_item, conv_net)
 
         # Get the sum of weights dictated by weighting
         label_score = sum(test_item["x"][test_item["y"].to(torch.bool)]).item()
-        opt_percentage = score / label_score
+        score_ratio = score / label_score
+
+        rand_score = random_rollout_max(test_item, 100)
+        #opt_compare = (score - rand_score) / (label_score - rand_score)
+
         acc_arr[dataset_num] += acc
-        opt_arr[dataset_num] += opt_percentage
+        opt_arr[dataset_num] += score_ratio
+
+        rand_arr[dataset_num] += rand_score / label_score
+        #compare_opt[dataset_num] += opt_compare
 
         if DEBUG and acc < 0.99:
             # Sorts the indices from greatest value to the least
@@ -89,6 +100,8 @@ for dataset_num, dataset_dir in enumerate(dataset_subfolders):
             input()
     acc_arr[dataset_num] /= len(test_set)
     opt_arr[dataset_num] /= len(test_set)
+    rand_arr[dataset_num] /= len(test_set)
+    compare_opt[dataset_num] /= len(test_set)
     print("###################################")
     print(acc_arr[dataset_num])
     print(opt_arr[dataset_num])
@@ -105,6 +118,22 @@ print(opt_arr)
 plt.plot(opt_arr, "b+")
 plt.title("Performance of {0} trained network over {1}".format(model_name, dataset_name))
 plt.xlabel("Size of testing graph")
-plt.ylabel("Optimality")
+plt.ylabel("Score Ratio")
 plt.xticks(np.arange(len(opt_arr)), dataset_sizes, rotation=90)
 plt.show()
+
+print(rand_arr)
+plt.plot(rand_arr, "b+")
+plt.title("Performance of random")
+plt.xlabel("Size of testing graph")
+plt.ylabel("Score Ratio")
+plt.xticks(np.arange(len(rand_arr)), dataset_sizes, rotation=90)
+plt.show()
+
+# print(compare_opt)
+# plt.plot(compare_opt, "b+")
+# plt.title("Normalized Performance of {0} trained network over {1}".format(model_name, dataset_name))
+# plt.xlabel("Size of testing graph")
+# plt.ylabel("Optimality")
+# plt.xticks(np.arange(len(compare_opt)), dataset_sizes, rotation=90)
+# plt.show()

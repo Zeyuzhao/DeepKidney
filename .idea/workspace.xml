@@ -2,46 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f647a4c2-755f-4e9a-94ac-f2378551463e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/binary.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/dense_weighted_800.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/weighted_500.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/weighted_80.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/weighted_800.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/weighted_mix_44.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/convnet2/size_mixed/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/convnet2/size_mixed/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_0/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_0/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_1/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_1/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_2/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_2/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_3/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_3/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_4/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_4/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_5/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_5/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_6/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_6/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_7/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_7/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_8/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_8/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_9/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_9/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_mixed/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/run_1/size_mixed/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ParallelEvaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ParallelTrain.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/count_cycles.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/dataset_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dataset_gen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/env/Env.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/Env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BatchTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BatchTraining.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/EvalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/EvalUtils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env/Env_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/Env_tester.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Visualize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Visualize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/Trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/Trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/Trainer_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/Trainer_tester.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,8 +87,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Evaluate">
-    <configuration name="BatchTraining" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+  <component name="RunManager" selected="Python.dataset_gen">
+    <configuration name="Env_tester" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DeepKidney" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -127,34 +96,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/model" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/env" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/model/BatchTraining.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Evaluate (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="DeepKidney" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/model" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/model/ParallelEvaluate.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/env/Env_tester.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,6 +114,9 @@
       <module name="DeepKidney" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/model" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -174,6 +124,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/model/Evaluate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Trainer_tester" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DeepKidney" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/search" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/search/Trainer_tester.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,7 +176,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dataset" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="count_cycles" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DeepKidney" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -217,7 +189,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/dataset.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/data/count_cycles.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -246,19 +218,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.BatchTraining" />
-      <item itemvalue="Python.Evaluate (1)" />
       <item itemvalue="Python.dataset_gen" />
-      <item itemvalue="Python.dataset" />
       <item itemvalue="Python.Evaluate" />
+      <item itemvalue="Python.Trainer_tester" />
+      <item itemvalue="Python.Env_tester" />
+      <item itemvalue="Python.count_cycles" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Evaluate" />
         <item itemvalue="Python.dataset_gen" />
-        <item itemvalue="Python.BatchTraining" />
-        <item itemvalue="Python.dataset" />
-        <item itemvalue="Python.Evaluate (1)" />
+        <item itemvalue="Python.count_cycles" />
+        <item itemvalue="Python.Trainer_tester" />
+        <item itemvalue="Python.Evaluate" />
+        <item itemvalue="Python.Env_tester" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +261,10 @@
       <workItem from="1566908311757" duration="18417000" />
       <workItem from="1567023040641" duration="78000" />
       <workItem from="1567023129527" duration="8771000" />
-      <workItem from="1567118547604" duration="10762000" />
+      <workItem from="1567118547604" duration="15055000" />
+      <workItem from="1567135100989" duration="6261000" />
+      <workItem from="1567178249676" duration="22944000" />
+      <workItem from="1568087424934" duration="1951000" />
     </task>
     <task id="LOCAL-00001" summary="Quick Update">
       <created>1566874433262</created>
@@ -359,6 +334,31 @@
           <line>63</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/model/Evaluate.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data/dataset_gen.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data/dataset_gen.py</url>
+          <line>145</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data/dataset_gen.py</url>
+          <line>149</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/data/dataset_gen.py</url>
+          <line>138</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -372,13 +372,15 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DeepKidney$BatchTraining.coverage" NAME="BatchTraining Coverage Results" MODIFIED="1567120464920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
     <SUITE FILE_PATH="coverage/DeepKidney$pytest_in_testset_43.coverage" NAME="pytest in testset_43 Coverage Results" MODIFIED="1566864287482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/testset_43" />
+    <SUITE FILE_PATH="coverage/DeepKidney$dataset_gen.coverage" NAME="dataset_gen Coverage Results" MODIFIED="1568088422374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
     <SUITE FILE_PATH="coverage/DeepKidney$Env_adj.coverage" NAME="Env_adj Coverage Results" MODIFIED="1565193860675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DeepKidney$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1566410747353" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
-    <SUITE FILE_PATH="coverage/DeepKidney$Evaluate.coverage" NAME="Evaluate Coverage Results" MODIFIED="1567130626347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
+    <SUITE FILE_PATH="coverage/DeepKidney$Evaluate.coverage" NAME="Evaluate Coverage Results" MODIFIED="1567180970901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
     <SUITE FILE_PATH="coverage/DeepKidney$EvalUtils.coverage" NAME="EvalUtils Coverage Results" MODIFIED="1566853851804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
-    <SUITE FILE_PATH="coverage/DeepKidney$Trainer_tester.coverage" NAME="Trainer_tester Coverage Results" MODIFIED="1566264868578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
+    <SUITE FILE_PATH="coverage/DeepKidney$Trainer_tester.coverage" NAME="Trainer_tester Coverage Results" MODIFIED="1567135061333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
     <SUITE FILE_PATH="coverage/DeepKidney$GCN_old.coverage" NAME="GCN_old Coverage Results" MODIFIED="1565923503302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DeepKidney$MaximalNetTest.coverage" NAME="MaximalNetTest Coverage Results" MODIFIED="1566392098150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
     <SUITE FILE_PATH="coverage/DeepKidney$Trainer.coverage" NAME="Trainer Coverage Results" MODIFIED="1566343828996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
+    <SUITE FILE_PATH="coverage/DeepKidney$count_cycles.coverage" NAME="count_cycles Coverage Results" MODIFIED="1568084925722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
   </component>
 </project>

@@ -5,13 +5,13 @@ from model.MaximalNet import *
 from torch_geometric import data
 from data.dataset import *
 from search.Trainer_tester import random_rollout_max, random_rollout_avg
-visualize = MaxIndDataset('../../data/unweighted_300')
+visualize = MaxIndDataset('../../data/size_80')
 
-MANUAL = False
+MANUAL = True
 gcn = MaximalNetWrapper()
-gcn.load_checkpoint(name="convnet3/weighted_convnet_epoch_99.pt")
+gcn.load_checkpoint(name="run_1/size_mixed/epoch_9.pt")
 
-for ID in range(10):
+for ID in range(1):
     test_item = visualize[ID]
     processed_test_item = {k: np.round(v.cpu().data.numpy(), 3) for k, v in iter(test_item)}
     processed_test_item["adj_matrix"] = edgeToAdj(len(processed_test_item["x"]), processed_test_item["edge_index"])
@@ -35,7 +35,7 @@ for ID in range(10):
         # print("Actions available: " + str(state.actions()))
         # print("Current Edge Index: " + str(state_item['edge_index']))
 
-        #draw_entry(state_item, node_dict=state.actions())
+        draw_entry(state_item, node_dict=state.actions(), title="ID: {0} Size: {1}".format(ID, len(node_weights)))
 
         if MANUAL:
             action = -1

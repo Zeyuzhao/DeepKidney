@@ -123,7 +123,7 @@ def draw_entry(entry, node_color=None, edge_color = None, title=None, node_dict=
     plt.title(title)
     pos = nx.circular_layout(g)
 
-    print(border_color)
+    #print(border_color)
     nx.draw(g, pos, node_size=2000, width=1, linewidths=3, node_color = node_color, edgecolors = border_color)
     nx.draw_networkx_labels(g, pos, node_labels)
     plt.show()

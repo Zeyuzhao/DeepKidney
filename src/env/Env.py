@@ -50,6 +50,11 @@ class MaxSetState:
         prob_arr = prob_arr / sum(prob_arr)
         return np.random.choice(self.actions(), p = prob_arr)
 
+    def rand_action(self):
+        return np.random.choice(self.actions())
+
+
+
     def max_action(self, prob_arr):
         return self.actions()[np.argmax(prob_arr)]
 
@@ -110,9 +115,10 @@ def softmax(array, temp):
 
 # %%
 # Exploration parameter, c_puct
-EXPLORE = 3
+EXPLORE = 2
 DEBUG = False
-TEMP = 0.3
+TEMP = 2
+INIT_COUNT = 0.1
 class Node:
     def __init__(self, state: MaxSetState, action=None, parent=None, pi = None):
         # The action that led to this state, and a reference to the parent
@@ -122,7 +128,7 @@ class Node:
         # Statistics
         self.totalScore = 0
         # Begin with a positive initialization to prevent divide-by-0 error
-        self.visits = 1
+        self.visits = INIT_COUNT
 
         # Children of node
         self.childNodes = []
@@ -136,6 +142,8 @@ class Node:
         self.pi = pi
         # Maps actions to their index in probability vector
         self.index = {}
+
+        self.max_score = 0
 
         for i, a in enumerate(self.actions):
             self.index[a] = i
@@ -172,9 +180,9 @@ class Node:
         self.u_val = defaultdict(int)
         self.q_val = defaultdict(int)
         for c in self.childNodes:
-            self.ucb[c] = c.totalScore / c.visits + EXPLORE * self._priors[self.index[c.action]] * sqrt(self.visits) / c.visits
+            self.ucb[c] = c.max_score + EXPLORE * self._priors[self.index[c.action]] * sqrt(self.visits) / c.visits
             self.u_val[c] = EXPLORE * self._priors[self.index[c.action]] * sqrt(self.visits) / c.visits
-            self.q_val[c] = c.totalScore / c.visits
+            self.q_val[c] = c.max_score
 
     def addChild(self, state, action):
         n = Node(state, action, self, self.pi)
@@ -186,6 +194,7 @@ class Node:
     def update(self, score):
         self.visits += 1
         self.totalScore += score
+        self.max_score = max(self.max_score, score)
         self.update_ucb() # May lag performance
 
     def getUCBScore(self):
@@ -231,7 +240,7 @@ class Node:
             #     raise Exception("u values not equal {0} {1}".format(u, u_val))
 
             prior_dict = dict(zip(self.actions, self._priors))
-            return "[A: {0} S/V: {1:.2f}/{2} Q: {3:.2f} U: {4:.2f} Q+U: {5:.2f} P: {6}]".format(self.action, self.totalScore, self.visits - 1, q_val, u_val, ucb, prior_dict)
+            return "[A: {0} S/V: {1:.2f}/{2} Q: {3:.2f} U: {4:.2f} Q+U: {5:.2f} P: {6}]".format(self.action, self.totalScore, self.visits - INIT_COUNT, q_val, u_val, ucb, prior_dict)
 
     def treeToString(self, level=0):
         s = '\t' * level + "" + str(self) + "\n"

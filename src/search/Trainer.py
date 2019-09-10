@@ -10,7 +10,7 @@ def softmax(array, temp):
     exp = np.exp(array / temp)
     return exp / sum(exp)
 
-def search(root: MaxSetState, pi, itermax, verbose):
+def search(root: MaxSetState, pi, itermax, verbose, random_rollout=False):
     rootnode = Node(root, pi=pi)
 
     for i in tqdm(range(itermax)):
@@ -22,7 +22,6 @@ def search(root: MaxSetState, pi, itermax, verbose):
             print("Selection vvvvvvvvv")
         while not node.untried_mask.any() and node.childNodes != []:
             node = node.select_child()
-
             if (verbose == 2):
                 print("Selection Action: " + str(node.action))
             state, reward = state.step(node.action)
@@ -33,10 +32,11 @@ def search(root: MaxSetState, pi, itermax, verbose):
 
         if node.untried_mask.any():
             a = node.select_expansion_action()
-            if (verbose == 2):
-                print("Expanding action: " + str(a))
             state, reward = state.step(a)
             node = node.addChild(state, a)
+            if (verbose == 2):
+                print("Expanding action: " + str(a))
+                print("Node Priors : " + str(node._priors))
 
         # Simulation
 
@@ -45,7 +45,7 @@ def search(root: MaxSetState, pi, itermax, verbose):
             print("Starting State: " + str(state))
         score = 0
         while len(state.actions()) > 0:
-            if pi:
+            if pi and not random_rollout:
                 index, weights = state.getEdgeIndex()
                 graph = {
                     "x": weights,
@@ -53,14 +53,14 @@ def search(root: MaxSetState, pi, itermax, verbose):
                 }
                 output = pi.predict(graph).flatten()
 
-                probs = softmax(output, 0.2)
+                probs = softmax(output, 3)
 
                 if (verbose == 2):
                     print("Weights: {0}".format(weights))
                     print("Policy Probs: " + str(probs.transpose()))
                 action = np.random.choice(state.actions(), p = probs)
             else:
-                action = state.sample_action()
+                action = state.rand_action()
             state, reward = state.step(action)
             score += reward
 
@@ -88,8 +88,8 @@ def search(root: MaxSetState, pi, itermax, verbose):
             tree = rootnode.getTree()
             #print(json.dumps(rootnode.getTree(), indent=2, sort_keys=False))
             print(rootnode.getChildInfo())
+            input()
             pass
-        input()
 
 
 
