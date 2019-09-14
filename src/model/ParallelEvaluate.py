@@ -44,7 +44,7 @@ for a, gcn_size in enumerate(range(10, 101, 10)):
                 # Sorts the indices from greatest value to the least
                 rankings = np.flip(vals.argsort())
                 dictionary = OrderedDict()
-                draw_entry(test_item.to(torch.device("cpu")), title="weighted_10: " + str(ID), node_color=correct, edge_color=labels)
+                draw_MIS(test_item.to(torch.device("cpu")), title="weighted_10: " + str(ID), node_color=correct, edge_color=labels)
                 print("ID: " + str(ID))
                 print("Model Rankings: {0}".format(rankings))
                 for i in range(len(rankings)):

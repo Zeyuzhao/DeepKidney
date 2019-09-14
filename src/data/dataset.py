@@ -13,6 +13,7 @@ from torch_geometric.utils import to_networkx
 
 from env.Env import edgeToAdj, MaxSetState
 
+import ast
 def from_networkx(G):
     r""""Converts a networkx graph to a data object graph.
 
@@ -28,12 +29,14 @@ def from_networkx(G):
     data.num_nodes = G.number_of_nodes()
     return data
 
+MAX_CYCLE_LEN = 3
 class MaxIndDataset(InMemoryDataset):
     def __init__(self, root):
         #print(osp.abspath(osp.join(root, "weight.csv")))
-        self.label_frame = pd.read_csv(osp.join(root, "label.csv"), engine='python')
-        self.weight_frame = pd.read_csv(osp.join(root, "weight.csv"), engine='python')
-
+        self.max_size = int(open(osp.join(root, "size.txt"), 'r').read())
+        self.label_frame = pd.read_csv(osp.join(root, "label.csv"), engine='python', names=["Filename"] + list(range(self.max_size)))
+        self.weight_frame = pd.read_csv(osp.join(root, "weight.csv"), engine='python', names=["Filename"] + list(range(self.max_size)))
+        self.cyc_frame = pd.read_csv(osp.join(root, "cycles.csv"), engine='python', names=["Filename"] + list(range(self.max_size)))
         self.root_dir = root
         self.num_graphs = len(self.label_frame.index)
 
@@ -52,28 +55,52 @@ class MaxIndDataset(InMemoryDataset):
         data_list = []
         for i in range(self.num_graphs):
             graph_name = osp.join(self.root_dir, self.label_frame.iloc[i, 0])
-            graph = nx.read_adjlist(graph_name, nodetype=int)
+            cyc_graph = nx.read_adjlist(graph_name, nodetype=int)
+
+            comp_graph_name = osp.join(self.root_dir, self.label_frame.iloc[i, 0].replace("cyc", "comp"))
+            comp_graph = nx.read_adjlist(comp_graph_name, nodetype=int, create_using=nx.DiGraph())
+
+            # plt.figure()
+            # plt.title(str(i))
+            # pos = nx.circular_layout(comp_graph)
+            # nx.draw(comp_graph, pos)
+            # nx.draw_networkx_labels(comp_graph, pos)
+            # plt.show()
 
             weight = torch.tensor(self.weight_frame.iloc[i, 1:].dropna(), dtype=torch.float)
             label = torch.tensor(self.label_frame.iloc[i, 1:].dropna(), dtype=torch.long)
 
-            data = from_networkx(graph)
+            # We pad the cycles tensor (with -1) because tensors must have uniform matrices; no jagged arrays
+            cycles = torch.tensor([self.pad_arr(ast.literal_eval(c), MAX_CYCLE_LEN)
+                                   for c in self.cyc_frame.iloc[i, 1:].dropna()],
+                                  dtype=torch.long)
 
+            data = from_networkx(cyc_graph)
             # Handle case of no edges, the program breaks down
             if len(data['edge_index']) == 0:
                 data["edge_index"] = torch.tensor([[], []], dtype=torch.long)
+
+            data["comp_index"] = torch.tensor(list(comp_graph.edges)).t().contiguous()
+            data["num_comp_nodes"] = torch.max(data["comp_index"]).item() + 1
+
             data.x = weight
             data.y = label
+            data["cycle"] = cycles
             #print("{0}: {1}".format(len(weight), data["edge_index"]))
             data_list.append(data)
+        pass
         data, slices = self.collate(data_list)
         torch.save((data, slices), self.processed_paths[0])
+    def pad_arr(self, arr, n):
+        return arr + [-1] * max(n - len(arr), 0)
 
     def state_repr(self, index):
         item = self[index]
         np_item = {k: np.round(v.cpu().data.numpy(), 3) for k, v in iter(item)}
         np_item["adj_matrix"] = edgeToAdj(len(np_item["x"]), np_item["edge_index"])
         return MaxSetState(np_item)
+
+
 
 def split_loader(dataset, train_size, test_size, batch_size):
     dataset.shuffle()
@@ -86,7 +113,7 @@ def split_loader(dataset, train_size, test_size, batch_size):
     test_loader = DataLoader(dataset[val_i:])
     return train_loader, val_loader, test_loader
 
-def draw_entry(entry, node_color=None, edge_color = None, title=None, node_dict=None, cmap = None):
+def draw_MIS(entry, node_color=None, edge_color = None, title=None, node_dict=None, cmap = None):
     g = to_networkx(entry)
 
     border_cmap = ["black", "blue"]
@@ -126,12 +153,69 @@ def draw_entry(entry, node_color=None, edge_color = None, title=None, node_dict=
     #print(border_color)
     nx.draw(g, pos, node_size=2000, width=1, linewidths=3, node_color = node_color, edgecolors = border_color)
     nx.draw_networkx_labels(g, pos, node_labels)
+
     plt.show()
 
+def draw_comp(entry, title = None):
+    G = nx.DiGraph()
+    G.add_nodes_from(range(entry["num_comp_nodes"]))
+    for i, (u, v) in enumerate(entry["comp_index"].t().tolist()):
+        G.add_edge(u, v)
 
+    edge_list = list_to_edge(list(entry["cycle"][entry["y"].to(bool)]))
+    plt.figure()
+    plt.title(title)
+    pos = nx.circular_layout(G)
+
+    #print(border_color)c
+    node_labels = {k: k for k in G.nodes}
+    nx.draw(G, pos, node_size=2000, width=1, linewidths=3)
+    nx.draw_networkx_labels(G, pos, node_labels)
+
+    for e in edge_list:
+        nx.draw_networkx_edges(G, pos,
+                               edgelist=e,
+                               width=8, alpha=0.5, edge_color='r')
+    plt.show()
+
+def draw_all_cyc(entry, title = None):
+    G = nx.DiGraph()
+    G.add_nodes_from(range(entry["num_comp_nodes"]))
+    for i, (u, v) in enumerate(entry["comp_index"].t().tolist()):
+        G.add_edge(u, v)
+
+    edge_list = list_to_edge(list(entry["cycle"]))
+
+    for e in edge_list:
+        plt.figure()
+        plt.title(title)
+        pos = nx.circular_layout(G)
+        #print(border_color)c
+        node_labels = {k: k for k in G.nodes}
+        nx.draw(G, pos, node_size=1000, width=1, linewidths=3)
+        nx.draw_networkx_labels(G, pos, node_labels)
+        nx.draw_networkx_edges(G, pos,
+                               edgelist=e,
+                               width=8, alpha=0.5, edge_color='r')
+        plt.show()
+
+def loop_to_edges(arr):
+    out = []
+    arr = arr[arr >= 0].cpu().data.numpy()
+    for i in range(len(arr) - 1):
+        out.append((arr[i], arr[i + 1]))
+    out.append((arr[-1], arr[0]))
+    return out
+def list_to_edge(arr):
+    total_edges = []
+    for l in arr:
+        total_edges.append(loop_to_edges(l))
+    return total_edges
 if __name__ == '__main__':
-    dataset = MaxIndDataset("../../data/weighted_mix_44")
+    dataset = MaxIndDataset("../../data/cyc_2/weighted_5")
     print(len(dataset))
-    for i in range(0, 5):
-        print(dataset[i])
-        draw_entry(dataset[i])
+    # for i in range(0, 5):
+    #     print(dataset[i])
+    #     draw_MIS(dataset[i])
+    draw_comp(dataset[0])
+    draw_all_cyc(dataset[0])

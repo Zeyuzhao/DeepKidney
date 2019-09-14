@@ -108,7 +108,7 @@ if __name__ == '__main__':
     soln_elements = np.flatnonzero(soln)
     target = sum(state.node_weights[soln.astype(bool)])
 
-    draw_entry(visualize[ID])
+    draw_MIS(visualize[ID])
     pi = MaximalNetWrapper()
     pi.load_checkpoint(name="convnet3/weighted_convnet_epoch_99.pt")
 

@@ -98,10 +98,13 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
     weight_filename = 'weight.csv'
     cyc_filename = 'cycles.csv'
     param_filename = "param.json"
+    size_filename = "size.txt"
 
     os.makedirs(os.path.join(root_dir), exist_ok=True)
     with open(os.path.join(root_dir, param_filename), 'w+') as param_file:
         json.dump(params, param_file)
+
+    max_cycle_graph_size = 0
     with open(os.path.join(root_dir, label_filename), 'w+') as label_file:
         with open(os.path.join(root_dir, weight_filename), 'w+') as weight_file:
             with open(os.path.join(root_dir, cyc_filename), 'w+') as cyc_file:
@@ -110,10 +113,9 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
                 cyc_writer = csv.writer(cyc_file, delimiter=',')
 
                 # Flawed!!! only max_size for compat graph, not the cycle graph
-                max_size = max(num_nodes_list)
-                label_writer.writerow(["Filename"] + list(range(max_size)))
-                weight_writer.writerow(["Filename"] + list(range(max_size)))
-                cyc_writer.writerow(["Filename"] + list(range(max_size)))
+                label_writer.writerow(["Filename"])
+                weight_writer.writerow(["Filename"])
+                cyc_writer.writerow(["Filename"])
 
                 for nth, num_nodes in enumerate(num_nodes_list):
                     for j in tqdm(range(num_examples_list[nth])):
@@ -131,7 +133,7 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
                         plt.show()
 
                         cyc_graph = comp_to_cycle(comp_graph)
-
+                        max_cycle_graph_size = max(max_cycle_graph_size, len(cyc_graph.nodes))
                         with open(os.path.join(root_dir, cyc_graph_filename), 'wb+') as graph_file:
                             nx.write_adjlist(cyc_graph, graph_file)
 
@@ -145,21 +147,32 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
 
                         label_writer.writerow([cyc_graph_filename] + list(output))
                         # Converting dictionary to list
+
+
+                        # w_l = []
+                        # for i in range(len(weights.keys())):
+                        #     w_l = weights[i]
                         weight_writer.writerow([cyc_graph_filename] + list(weights.values()))
                         cyc_writer.writerow([cyc_graph_filename] + list(cycles.values()))
+
                         label_file.flush()
+                        weight_file.flush()
+                        cyc_file.flush()
+
+    with open(os.path.join(root_dir, size_filename), 'w+') as size_file:
+        size_file.write(str(max_cycle_graph_size))
     generate_tarfile(root_dir + '.tar.gz', root_dir)
     print("done")
 
 if __name__ == '__main__':
 
-    dataset_name = "cyc_1"
+    dataset_name = "cyc_2"
     # if osp.exists("../../data/" + dataset_name):
     #     raise Exception("Existing dataset has the name [{0}]. Either remove the existing dataset, or rename the "
     #                     "current one".format(dataset_name))
-    num_nodes = 10
+    num_nodes = 5
     num_examples = 10
-    edge_prob = 0.3
+    edge_prob = 0.5
     generate_dataset(name="{0}/weighted_{1}".format(dataset_name, num_nodes),
                          num_examples_list=[num_examples],
                          num_nodes_list=[num_nodes],

@@ -43,7 +43,7 @@ def searchTester(dataset_name):
 
     for ID in range(0, 100):
         test_graph = visualize[ID]
-        draw_entry(test_graph)
+        draw_MIS(test_graph)
         tot_score = 0
         max_tot_score = 0
         trials = 1

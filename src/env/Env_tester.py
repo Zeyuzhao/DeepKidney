@@ -35,7 +35,7 @@ for ID in range(1):
         # print("Actions available: " + str(state.actions()))
         # print("Current Edge Index: " + str(state_item['edge_index']))
 
-        draw_entry(state_item, node_dict=state.actions(), title="ID: {0} Size: {1}".format(ID, len(node_weights)))
+        draw_MIS(state_item, node_dict=state.actions(), title="ID: {0} Size: {1}".format(ID, len(node_weights)))
 
         if MANUAL:
             action = -1
