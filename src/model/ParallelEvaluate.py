@@ -11,7 +11,7 @@ acc_matrix = np.zeros((10, 10))
 #Load datasets into an array
 dataset_arr = []
 for i, num_nodes in enumerate(range(10, 101, 10)):
-    dataset_arr.append(MaxIndDataset("../../data/testset_43/weighted_{0}".format(num_nodes)))
+    dataset_arr.append(KidneyDataset("../../data/testset_43/weighted_{0}".format(num_nodes)))
 
 for a, gcn_size in enumerate(range(10, 101, 10)):
     conv_net = ConvNet3().to(device)

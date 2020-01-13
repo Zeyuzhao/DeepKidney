@@ -17,6 +17,12 @@ warnings.filterwarnings("ignore")
 
 import random
 def draw_reduced(g, node_color=None):
+    """
+    Displays a visual representation of the graph
+    :param g: Input graph G
+    :param node_color: The color of the highlighted nodes
+    :return: None
+    """
     node_lables = nx.get_node_attributes(g, "weight")
 
     if node_lables:
@@ -33,7 +39,15 @@ def draw_reduced(g, node_color=None):
     plt.show()
     # plt.savefig("graph.png", dpi=1000)
 
+
 def compute_max_ind_set(graph, display=False, debug=False):
+    """
+    Computes the MWIS from a specified graph
+    :param graph: The input graph, either weighted or unweighted
+    :param display: Flag for displaying
+    :param debug: Flag for debugging
+    :return: None
+    """
     nodes = list(graph.nodes)
     model = Model('Maximum Independent Set')
 
@@ -49,6 +63,7 @@ def compute_max_ind_set(graph, display=False, debug=False):
 
     # Set objective: Maximize the weighted sum of nodes, or if no weights, just the cardinality.
     weights = nx.get_node_attributes(graph, "weight")
+
     if weights:
         obj = sum([indicators[i] * weights[i] for i in nodes])
     else:
@@ -71,11 +86,24 @@ def compute_max_ind_set(graph, display=False, debug=False):
         draw_reduced(graph, color_map)
     return soln
 
+
 def generate_tarfile(output_filename, source_dir):
+    """
+    Create compressed tar.gz file
+    :param output_filename: The output filename
+    :param source_dir: The source directory
+    :return:
+    """
     with tarfile.open(output_filename, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 def comp_to_cycle(comp_graph: DiGraph, max_length = 3):
+    """
+    Generates a new MWIS from a Compatibility Graph
+    :param comp_graph: Original Compatibility Graph
+    :param max_length: Maximum Length of Cycles (default: 3)
+    :return: A new MWIS graph
+    """
     cycles = count_cycles(comp_graph, max_length)
     out_graph = nx.DiGraph()
     for i, c in enumerate(cycles):
@@ -88,7 +116,19 @@ def comp_to_cycle(comp_graph: DiGraph, max_length = 3):
     return out_graph
 
 
-def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, weighted = False, seed = 42, extreme=False):
+def generate_kidney(name, num_examples_list, num_nodes_list, edge_prob_list, weighted = False, seed = 42, extreme=False, debug=False):
+    """
+    Generates a Kidney Exchange Dataset with various parameters.
+    :param name: Filename of the dataset
+    :param num_examples_list: Number of graphs for each category
+    :param num_nodes_list: Graph size for each category
+    :param edge_prob_list: Edge probabilities for each category
+    :param weighted: If True, generate random edge probabilities
+    :param seed: Seed for random graph generation
+    :param extreme:
+    :param debug:
+    :return:
+    """
     # Get the parameters of the function, need to be first
     params = locals()
     random.seed(seed)
@@ -113,9 +153,9 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
                 cyc_writer = csv.writer(cyc_file, delimiter=',')
 
                 # Flawed!!! only max_size for compat graph, not the cycle graph
-                label_writer.writerow(["Filename"])
-                weight_writer.writerow(["Filename"])
-                cyc_writer.writerow(["Filename"])
+                # label_writer.writerow(["Filename"])
+                # weight_writer.writerow(["Filename"])
+                # cyc_writer.writerow(["Filename"])
 
                 for nth, num_nodes in enumerate(num_nodes_list):
                     for j in tqdm(range(num_examples_list[nth])):
@@ -127,17 +167,17 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
                         with open(os.path.join(root_dir, comp_graph_filename), 'wb+') as graph_file:
                             nx.write_adjlist(comp_graph, graph_file)
 
-                        pos = nx.circular_layout(comp_graph)
-                        nx.draw(comp_graph, pos)
-                        nx.draw_networkx_labels(comp_graph, pos)
-                        plt.show()
+                        # pos = nx.circular_layout(comp_graph)
+                        # nx.draw(comp_graph, pos)
+                        # nx.draw_networkx_labels(comp_graph, pos)
+                        # plt.show()
 
                         cyc_graph = comp_to_cycle(comp_graph)
                         max_cycle_graph_size = max(max_cycle_graph_size, len(cyc_graph.nodes))
                         with open(os.path.join(root_dir, cyc_graph_filename), 'wb+') as graph_file:
                             nx.write_adjlist(cyc_graph, graph_file)
 
-                        output_list = compute_max_ind_set(cyc_graph)
+                        output_list = compute_max_ind_set(cyc_graph, debug=debug)
                         output = np.zeros(len(cyc_graph.nodes), dtype=int)
                         output[output_list] = 1
 
@@ -164,22 +204,32 @@ def generate_dataset(name, num_examples_list, num_nodes_list, edge_prob_list, we
     generate_tarfile(root_dir + '.tar.gz', root_dir)
     print("done")
 
+
 if __name__ == '__main__':
 
-    dataset_name = "cyc_2"
-    # if osp.exists("../../data/" + dataset_name):
-    #     raise Exception("Existing dataset has the name [{0}]. Either remove the existing dataset, or rename the "
-    #                     "current one".format(dataset_name))
-    num_nodes = 5
-    num_examples = 10
-    edge_prob = 0.5
-    generate_dataset(name="{0}/weighted_{1}".format(dataset_name, num_nodes),
-                         num_examples_list=[num_examples],
-                         num_nodes_list=[num_nodes],
-                         edge_prob_list=[edge_prob],
-                         weighted=True,
-                         seed=10101,
-                         extreme=False)
+    dataset_name = "kidney_fig_sparsity"
+    if osp.exists("../../data/" + dataset_name):
+        raise Exception("Existing dataset has the name [{0}]. Either remove the existing dataset, or rename the "
+                        "current one".format(dataset_name))
+
+    num_nodes_list = [500, 500, 500, 500]
+    edge_prob_list = [0.016, 0.018, 0.020, 0.022]
+    num_examples_list = [40, 40, 40, 40]
+    for i in range(len(num_nodes_list)):
+        num_nodes = num_nodes_list[i]
+        edge_prob = edge_prob_list[i]
+        num_examples = num_examples_list[0]
+        generate_kidney(name="{0}/weighted_n{1}_p{2}".format(dataset_name, num_nodes, int(edge_prob * 1000)),
+                        num_examples_list=[num_examples],
+                        num_nodes_list=[num_nodes],
+                        edge_prob_list=[edge_prob],
+                        weighted=True,
+                        seed=42,
+                        extreme=False,
+                        debug=False)
+
+
+
 
     # num_size_types = 1
     # size_diff = 80

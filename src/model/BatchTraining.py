@@ -52,28 +52,40 @@ def score_eval(model, loader):
         running_score += ratio
     return running_score / len(loader)
 
+import random
+import string
 
+VOWELS = "aeiou"
+CONSONANTS = "".join(set(string.ascii_lowercase) - set(VOWELS))
 
+def generate_word(length):
+    word = ""
+    for i in range(length):
+        if i % 2 == 0:
+            word += random.choice(CONSONANTS)
+        else:
+            word += random.choice(VOWELS)
+    return word
 
 if __name__ == '__main__':
 
     SAVE_FREQ = 5
 
-    model_name = "size_mixed"
-    project_name = "convnet2"
+    model_name = "deepconvnet_2"
+    project_name = "kidney"
     run_folder = "../../model/{0}/".format(project_name)
 
     if not osp.exists(run_folder):
         print("Specified checkpoint directory does not exist! Making directory [{}].".format(run_folder))
         os.mkdir(run_folder)
-    wandb.init(name="size_{0}".format(model_name), project=project_name, entity="deepkidney", reinit=True)
-    model = ConvNet2().to(device)
+    wandb.init(name="{0}_{1}".format(model_name, generate_word(5)), project=project_name, entity="deepkidney", reinit=True)
+    model = MultiNet().to(device)
     wandb.watch(model)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=0.0008, weight_decay=5e-6)
-    training_set = MaxIndDataset('../../data/weighted_mix_44')
+    training_set = KidneyDataset('../../data/kidney_train/weighted_n500_p15')
     train_loader, val_loader, test_loader = split_loader(training_set, .8, .15, 25)
-    for epoch in tqdm(range(10)):
+    for epoch in tqdm(range(25)):
         train_loss = train(model, optimizer, train_loader)
         val_loss = ce_eval(model, val_loader)
         #score = score_eval(model, test_loader)

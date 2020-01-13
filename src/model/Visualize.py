@@ -6,14 +6,15 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 conv_net = ConvNet3().to(device)
 
-name="epoch_9"
-folder="../../model/size_0"
+model_folder= "../../model/run_1/"
+model_name= "size_mixed"
+model_file = "epoch_9.pt"
 
-params = torch.load(osp.join(folder, name))
+params = torch.load(osp.join(model_folder, model_name, model_file))
 conv_net.load_state_dict(params)
 conv_net.eval()
 
-visualize = MaxIndDataset("../../data/testset_43/weighted_10")
+visualize = KidneyDataset("../../data/mini_MIS")
 
 for ID in range(0, len(visualize), 100):
     test_item = visualize[ID]

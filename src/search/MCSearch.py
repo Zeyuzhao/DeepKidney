@@ -10,9 +10,10 @@ def softmax(array, temp):
     exp = np.exp(array / temp)
     return exp / sum(exp)
 
-def search(root: MaxSetState, pi, itermax, verbose, random_rollout=False):
-    rootnode = Node(root, pi=pi)
-
+def search(root: MaxSetState, pi, itermax, verbose, random_rollout=False, expansion_limit = 50):
+    rootnode = Node(root, pi=pi, expansion_limit = expansion_limit)
+    if verbose == 2:
+        print("ROOT_NODE PRIOR: " + str(rootnode._priors))
     for i in tqdm(range(itermax)):
         #if (verbose == 2): print(rootnode.treeToString(0))
         node = rootnode
@@ -100,7 +101,7 @@ def search(root: MaxSetState, pi, itermax, verbose, random_rollout=False):
     #return actions
 
 if __name__ == '__main__':
-    visualize = MaxIndDataset('../../data/weighted_4')
+    visualize = KidneyDataset('../../data/weighted_4')
 
     ID = 0
     state = visualize.state_repr(ID)

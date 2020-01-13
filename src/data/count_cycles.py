@@ -1,5 +1,5 @@
 
-# James Strimble
+# Adapted from James Strimble's Kidney Exchange Clearing repository
 from collections import deque
 
 from networkx import DiGraph, path_graph
@@ -47,7 +47,7 @@ def count_cycles(digraph: DiGraph, max_length):
                 lambda u: (w for w in transp_adj_lists[u] if w > v)
         )
         vtx_used[v] = True
-        cycle(v, v, 1, [v])
+        cycle(v, v,   1, [v])
         vtx_used[v] = False
     return cycle_arr
 
@@ -59,6 +59,7 @@ def calculate_shortest_path_lengths(digraph: DiGraph, from_v, max_dist,
     Return value: a list of distances of length equal to the number of vertices.
     If the shortest path to a vertex is greater than max_dist, the list element
     will be 999999999.
+
     Args:
         from_v: The starting vertex
         max_dist: The maximum distance we're interested in
@@ -97,10 +98,18 @@ def cycle_graph(n):
     return G
 
 if __name__ == '__main__':
+    # Testing out the cycle counting and drawing utilities
+
+    # Generate a cycle graph with a 2 and 4 cycle
     cycle = cycle_graph(4)
     cycle.add_edge(1, 0)
+
+    # Draw in circular format
     pos = nx.circular_layout(cycle)
     nx.draw(cycle, pos)
     nx.draw_networkx_labels(cycle, pos)
     plt.show()
-    print(count_cycles(cycle, 2)[0])
+
+    # Print num of cycles with len <= 4
+    # 2 cycles: [0, 1] and [0, 1, 2, 3]
+    print(count_cycles(cycle, 4))

@@ -28,24 +28,29 @@ class MultiNet(torch.nn.Module):
     def __init__(self):
         super(MultiNet, self).__init__()
         self.conv_in = GCNConv(1, 32)
-        self.conv_mid = GCNConv(32, 32)
+        self.conv_mid1 = GCNConv(32, 32)
+        self.conv_mid2 = GCNConv(32, 32)
+        self.conv_mid3 = GCNConv(32, 32)
         self.conv_out = GCNConv(32, 1)
 
     def forward(self, data):
         weight = data["x"].view(-1, 1)
-        edge_index = add_self_loops(data["edge_index"])
+        edge_index = data["edge_index"] # add_self_loops(data["edge_index"])
         x = self.conv_in(weight, edge_index)
         x = F.relu(x)
 
-        x = self.conv_mid(x, edge_index)
+        x = self.conv_mid1(x, edge_index)
         x = F.relu(x)
 
-        x = self.conv_mid(x, edge_index)
+        x = self.conv_mid2(x, edge_index)
+        x = F.relu(x)
+
+        x = self.conv_mid3(x, edge_index)
         x = F.relu(x)
 
         x = self.conv_out(x, edge_index)
         x = torch.sigmoid(x)
-        return x
+        return x.reshape(-1)
 
 class ConvNet(torch.nn.Module):
     def __init__(self):
@@ -97,8 +102,10 @@ class ConvNet2(torch.nn.Module):
         self.conv_mean1 = GraphConv(32, 32, aggr="mean")
         self.conv_mean2 = GraphConv(32, 32, aggr="add")
         self.conv_mean3 = GraphConv(32, 32, aggr="mean")
-        self.conv_max3 = GraphConv(32, 32, aggr="max")
-        self.conv_out = GraphConv(32, 1, aggr="max")
+        self.conv_mean4 = GraphConv(32, 32, aggr="add")
+        self.conv_mean5 = GraphConv(32, 32, aggr="mean")
+        self.conv_max1 = GraphConv(32, 32, aggr="max")
+        self.conv_out = GraphConv(32, 1, aggr="mean")
 
     def forward(self, data):
         weight = data["x"].view(-1, 1)
@@ -111,7 +118,11 @@ class ConvNet2(torch.nn.Module):
         x = F.relu(x)
         x = self.conv_mean3(x, edge_index)
         x = F.relu(x)
-        x = self.conv_max3(x, edge_index)
+        x = self.conv_mean4(x, edge_index)
+        x = F.relu(x)
+        x = self.conv_mean5(x, edge_index)
+        x = F.relu(x)
+        x = self.conv_max1(x, edge_index)
         x = F.relu(x)
         x = self.conv_out(x, edge_index)
         x = torch.sigmoid(x).reshape(-1)

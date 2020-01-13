@@ -10,6 +10,8 @@ import numpy as np
 # %%
 
 ### Adj Matrix List Implementation
+from torch_geometric.data import Data
+
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class MaxSetState:
@@ -53,16 +55,15 @@ class MaxSetState:
     def rand_action(self):
         return np.random.choice(self.actions())
 
-
-
     def max_action(self, prob_arr):
         return self.actions()[np.argmax(prob_arr)]
 
     def getTensorItem(self):
-        tensor_item = {}
+        tensor_item = Data()
         edge_index, x = self.getEdgeIndex()
         tensor_item["edge_index"] = torch.tensor(edge_index).to(device, dtype=torch.long)
         tensor_item["x"] = torch.tensor(x).to(device, dtype=torch.float)
+        tensor_item.num_nodes = len(x)
         return tensor_item
 
     @property
@@ -115,12 +116,12 @@ def softmax(array, temp):
 
 # %%
 # Exploration parameter, c_puct
-EXPLORE = 2
+EXPLORE = 50
 DEBUG = False
-TEMP = 2
+TEMP = 0.05
 INIT_COUNT = 0.1
 class Node:
-    def __init__(self, state: MaxSetState, action=None, parent=None, pi = None):
+    def __init__(self, state: MaxSetState, action=None, parent=None, pi = None, expansion_limit = 50):
         # The action that led to this state, and a reference to the parent
         self.action = action
         self.parentNode = parent
@@ -144,6 +145,8 @@ class Node:
         self.index = {}
 
         self.max_score = 0
+
+        self.expansion_limit = expansion_limit
 
         for i, a in enumerate(self.actions):
             self.index[a] = i
@@ -169,6 +172,11 @@ class Node:
         #print("Upper Confidences: " + str(upper_confidence))
         return max(self.ucb, key=self.ucb.get)
 
+    # We limit the number of nodes to expand
+    # Returns boolean once the expansion_limit is reached
+    def fullyExpanded(self):
+        return (self.num_actions - np.count_nonzero(self.untried_mask)) > self.expansion_limit
+
     def select_expansion_action(self):
         untried = self.actions[self.untried_mask]
         norm_probs = self._priors[self.untried_mask] / sum(self._priors[self.untried_mask])
@@ -185,7 +193,7 @@ class Node:
             self.q_val[c] = c.max_score
 
     def addChild(self, state, action):
-        n = Node(state, action, self, self.pi)
+        n = Node(state, action, self, self.pi, expansion_limit=self.expansion_limit)
         self.untried_mask[self.index[action]] = 0
         self.childNodes.append(n)
         return n

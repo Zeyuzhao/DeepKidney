@@ -73,7 +73,7 @@ if __name__ == '__main__':
         wandb.init(name="size_{0}".format(num_nodes), project=BATCH_NAME, entity="deepkidney", reinit=True)
         model = models[i]
         optimizer = torch.optim.Adam(model.parameters(), lr=0.0008, weight_decay=5e-6)
-        training_set = MaxIndDataset('../../data/mixed_42/weighted_{0}'.format(num_nodes))
+        training_set = KidneyDataset('../../data/mixed_42/weighted_{0}'.format(num_nodes))
         train_loader, val_loader, test_loader = split_loader(training_set, .8, .15, 25)
         for epoch in tqdm(range(15)):
             train_loss = train(model, optimizer, train_loader)

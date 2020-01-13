@@ -1,7 +1,7 @@
 import torch
 
 from env.Env import MaxSetState
-from data.dataset import MaxIndDataset
+from data.dataset import KidneyDataset
 from model.GCN import ConvNet3
 import os.path as osp
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     params = torch.load(osp.join(folder, name))
     conv_net.load_state_dict(params)
 
-    visualize = MaxIndDataset("../../data/weighted_mix_2")
+    visualize = KidneyDataset("../../data/weighted_mix_2")
 
     for i in range(len(visualize)):
         tot_reward = max_eval(visualize[i], conv_net)

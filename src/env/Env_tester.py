@@ -4,8 +4,8 @@ from env.Env import *
 from model.MaximalNet import *
 from torch_geometric import data
 from data.dataset import *
-from search.Trainer_tester import random_rollout_max, random_rollout_avg
-visualize = MaxIndDataset('../../data/size_80')
+from search.MCSearch_tester import random_rollout_max, random_rollout_avg
+visualize = KidneyDataset('../../data/size_80')
 
 MANUAL = True
 gcn = MaximalNetWrapper()
