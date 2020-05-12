@@ -6,5 +6,12 @@ Contained within this repository is code that generates data (compatibility grap
 
 ## Installation
 
+Start by cloning this repository by using `git clone`.
+
+These repository requries several Python 3 Dependencies. The dependencies are listed in the requirements.txt file. We recommend using Conda to install the packages, and resort to pip if necessary.
+
+There are several dependencies that require special installation. Firstly, Gurobi and PySCIPopt require special academic licenses. Although we are planning to move away from Gurobi, the current codebase still relies on it. The python packages are merely wrappers for these commericial solvers. 
+
+Pytorch Geometric can be quite tricky to setup, and also requires special dependencies of its own. 
 ## License
 MIT License
