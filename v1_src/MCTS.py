@@ -2,7 +2,7 @@ import random
 
 from math import sqrt, log
 
-from GCN_old import *
+from v1_src.GCN_old import *
 
 # In[1]
 class MaxSetState:

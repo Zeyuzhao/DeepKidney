@@ -1,11 +1,8 @@
 # %%
 
-import random
 from collections import defaultdict
-import json
-from math import sqrt, log, isclose
+from math import sqrt
 import torch
-import numpy as np
 
 # %%
 
@@ -283,7 +280,7 @@ class Node:
         self._priors = probs
 
 if __name__ == '__main__':
-    from GCN_old import *
+    from v1_src.GCN_old import *
 
     visualize = MaxIndDataset('data/weighted_4')
 
