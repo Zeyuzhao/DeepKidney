@@ -2,53 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f647a4c2-755f-4e9a-94ac-f2378551463e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/mini_MIS.tar.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2/epoch_14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2/epoch_19.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2/epoch_24.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2_add/epoch_14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2_add/epoch_19.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2_add/epoch_24.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2_add/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet2_add/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet3/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_2_add/epoch_14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_2_add/epoch_19.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_2_add/epoch_24.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_2_add/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_2_add/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_3/epoch_14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_3/epoch_19.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_3/epoch_24.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_3/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_convnet_3/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_deepconvnet_2/epoch_14.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_deepconvnet_2/epoch_19.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_deepconvnet_2/epoch_24.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_deepconvnet_2/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_deepconvnet_2/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_kid_size500/epoch_4.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/kidney/size_kid_size500/epoch_9.pt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/size_figure.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/MIS_gen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/count_cycles.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/count_cycles.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dataset_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/dataset_gen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/env/Env.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/Env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/env/Env_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/Env_tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BatchTraining.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BatchTraining.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/EvalUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/EvalUtils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/GCN.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GCN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ParallelEvaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ParallelEvaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ParallelTrain.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ParallelTrain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Visualize.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Visualize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playground/Play.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/playground/Play.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/Trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/MCSearch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/search/Trainer_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/MCSearch_tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset_loader.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/dataset_loader.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/cyc2node.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/cyc2node.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/dataset_gen.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/dataset_gen.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,9 +26,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="DeepKidney" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -92,23 +47,22 @@
   </component>
   <component name="JupyterTrust" id="429a208e-c6ef-45fe-8636-dc3e552371a5" />
   <component name="ProjectId" id="1P1OO3cor06MJQHl6CRp5ykCfD9" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/cyc_500" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="PyDebuggerOptionsProvider">
     <option name="mySupportGeventDebugging" value="true" />
@@ -280,18 +234,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -331,6 +273,7 @@
       <workItem from="1577641757377" duration="1334000" />
       <workItem from="1578189745367" duration="12400000" />
       <workItem from="1578882034431" duration="1479000" />
+      <workItem from="1589311316716" duration="1495000" />
     </task>
     <task id="LOCAL-00001" summary="Quick Update">
       <created>1566874433262</created>
@@ -350,20 +293,19 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -372,14 +314,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Project Structure" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="240" y="149" width="890" height="807" key="CommitChangelistDialog2" timestamp="1578883699829">
+    <state x="769" y="355" width="680" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589311344600">
       <screen x="67" y="27" width="2493" height="1053" />
     </state>
-    <state x="240" y="149" width="890" height="807" key="CommitChangelistDialog2/67.27.2493.1053@67.27.2493.1053" timestamp="1578883699829" />
-    <state x="353" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1578883476587">
+    <state x="769" y="355" width="680" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.2493.1053@67.27.2493.1053" timestamp="1589311344600" />
+    <state x="821" y="406" width="519" height="294" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589311627546">
       <screen x="67" y="27" width="2493" height="1053" />
     </state>
-    <state x="353" y="257" width="672" height="678" key="search.everywhere.popup/67.27.2493.1053@67.27.2493.1053" timestamp="1578883476587" />
+    <state x="821" y="406" width="519" height="294" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/67.27.2493.1053@67.27.2493.1053" timestamp="1589311627546" />
+    <state x="575" y="188" key="SettingsEditor" timestamp="1589311850984">
+      <screen x="67" y="27" width="2493" height="1053" />
+    </state>
+    <state x="575" y="188" key="SettingsEditor/67.27.2493.1053@67.27.2493.1053" timestamp="1589311850984" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -418,11 +364,6 @@
           <url>file://$PROJECT_DIR$/src/data/dataset.py</url>
           <line>76</line>
           <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/data/dataset.py</url>
-          <line>90</line>
-          <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/data/dataset.py</url>
@@ -465,19 +406,19 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DeepKidney$MCSearch_tester.coverage" NAME="MCSearch_tester Coverage Results" MODIFIED="1568599246384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
-    <SUITE FILE_PATH="coverage/DeepKidney$Play.coverage" NAME="Play Coverage Results" MODIFIED="1568497683083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/playground" />
-    <SUITE FILE_PATH="coverage/DeepKidney$count_cycles.coverage" NAME="count_cycles Coverage Results" MODIFIED="1568084925722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
     <SUITE FILE_PATH="coverage/DeepKidney$Env_adj.coverage" NAME="Env_adj Coverage Results" MODIFIED="1565193860675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DeepKidney$BatchTraining.coverage" NAME="BatchTraining Coverage Results" MODIFIED="1569018125742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
-    <SUITE FILE_PATH="coverage/DeepKidney$Evaluate.coverage" NAME="Evaluate Coverage Results" MODIFIED="1568686595626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
-    <SUITE FILE_PATH="coverage/DeepKidney$pytest_in_testset_43.coverage" NAME="pytest in testset_43 Coverage Results" MODIFIED="1566864287482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/testset_43" />
-    <SUITE FILE_PATH="coverage/DeepKidney$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1568501896566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/DeepKidney$count_cycles.coverage" NAME="count_cycles Coverage Results" MODIFIED="1568084925722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
+    <SUITE FILE_PATH="coverage/DeepKidney$MCSearch_tester.coverage" NAME="MCSearch_tester Coverage Results" MODIFIED="1568599246384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
     <SUITE FILE_PATH="coverage/DeepKidney$EvalUtils.coverage" NAME="EvalUtils Coverage Results" MODIFIED="1566853851804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
-    <SUITE FILE_PATH="coverage/DeepKidney$dataset_gen.coverage" NAME="dataset_gen Coverage Results" MODIFIED="1568163376246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
     <SUITE FILE_PATH="coverage/DeepKidney$GCN_old.coverage" NAME="GCN_old Coverage Results" MODIFIED="1565923503302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DeepKidney$Evaluate.coverage" NAME="Evaluate Coverage Results" MODIFIED="1568686595626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
+    <SUITE FILE_PATH="coverage/DeepKidney$Play.coverage" NAME="Play Coverage Results" MODIFIED="1568497683083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/playground" />
+    <SUITE FILE_PATH="coverage/DeepKidney$dataset_gen.coverage" NAME="dataset_gen Coverage Results" MODIFIED="1568163376246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
     <SUITE FILE_PATH="coverage/DeepKidney$Trainer.coverage" NAME="Trainer Coverage Results" MODIFIED="1566343828996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
-    <SUITE FILE_PATH="coverage/DeepKidney$MaximalNetTest.coverage" NAME="MaximalNetTest Coverage Results" MODIFIED="1566392098150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
     <SUITE FILE_PATH="coverage/DeepKidney$Trainer_tester.coverage" NAME="Trainer_tester Coverage Results" MODIFIED="1567135061333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/search" />
+    <SUITE FILE_PATH="coverage/DeepKidney$BatchTraining.coverage" NAME="BatchTraining Coverage Results" MODIFIED="1569018125742" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
+    <SUITE FILE_PATH="coverage/DeepKidney$pytest_in_testset_43.coverage" NAME="pytest in testset_43 Coverage Results" MODIFIED="1566864287482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data/testset_43" />
+    <SUITE FILE_PATH="coverage/DeepKidney$MaximalNetTest.coverage" NAME="MaximalNetTest Coverage Results" MODIFIED="1566392098150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/model" />
+    <SUITE FILE_PATH="coverage/DeepKidney$dataset.coverage" NAME="dataset Coverage Results" MODIFIED="1568501896566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/data" />
   </component>
 </project>
